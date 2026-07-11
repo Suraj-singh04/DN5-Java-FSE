@@ -1,7 +1,15 @@
 package com.library;
 
 public class BookService {
-   public void display() {
-    System.out.println("Book Service is running...");
-   }
+
+    private BookRepository repository;
+
+    public void setRepository(BookRepository repository) {
+        this.repository = repository;
+    }
+
+    public void display() {
+        System.out.println("Book Name : " + repository.getBook());
+    }
+
 }
