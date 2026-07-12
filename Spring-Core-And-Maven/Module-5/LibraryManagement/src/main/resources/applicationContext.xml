@@ -12,10 +12,17 @@
     <bean id="bookService"
           class="com.library.BookService">
 
-        <property
-                name="repository"
-                ref="bookRepository"/>
+        <constructor-arg ref="bookRepository"/>
 
     </bean>  
+
+    <bean id="magazineService"
+      class="com.library.MagazineService">
+
+    <property
+            name="repository"
+            ref="bookRepository"/>
+
+</bean>
 
 </beans>
