@@ -22,6 +22,12 @@ public class OrmLearnApplication implements CommandLineRunner {
 	public void run(String... args) {
 		List<Country> countries = countryService.getAllCountries();
 		countries.forEach(System.out::println);
+
+		System.out.println("---------------------------------");
+		
+		Country country = countryService.getCountry("India");
+
+		System.out.println(country);
 	}
 
 }
