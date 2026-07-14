@@ -1,13 +1,27 @@
 package com.cognizant.ormlearn;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.cognizant.ormlearn.entity.Country;
+import com.cognizant.ormlearn.service.CountryService;
+
 @SpringBootApplication
-public class OrmLearnApplication {
+public class OrmLearnApplication implements CommandLineRunner {
+	@Autowired
+	private CountryService countryService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(OrmLearnApplication.class, args);
+	}
+
+	public void run(String... args) {
+		List<Country> countries = countryService.getAllCountries();
+		countries.forEach(System.out::println);
 	}
 
 }
