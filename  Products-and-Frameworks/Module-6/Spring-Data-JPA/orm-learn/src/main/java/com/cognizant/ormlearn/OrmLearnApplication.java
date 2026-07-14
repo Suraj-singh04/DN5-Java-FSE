@@ -38,6 +38,25 @@ public class OrmLearnApplication implements CommandLineRunner {
 		System.out.println("Using Pagination");
 
 		countryService.getCountriesPage();
+
+		System.out.println("Containing");
+
+		countryService.search("an")
+					.forEach(System.out::println);
+
+		System.out.println();
+
+		System.out.println("Sorted");
+
+		countryService.searchSorted("an")
+					.forEach(System.out::println);
+
+		System.out.println();
+
+		System.out.println("Starts With");
+
+		countryService.startsWith("I")
+					.forEach(System.out::println);
 	}
 
 }
