@@ -25,7 +25,13 @@ public class OrmLearnApplication implements CommandLineRunner {
 
 		System.out.println("---------------------------------");
 		
-		Country country = countryService.getCountry("India");
+		// Country country = countryService.getCountry("India");
+
+		// System.out.println(country);
+
+		System.out.println("Using @Query");
+
+		Country country = countryService.getCountryUsingQuery("India");
 
 		System.out.println(country);
 	}

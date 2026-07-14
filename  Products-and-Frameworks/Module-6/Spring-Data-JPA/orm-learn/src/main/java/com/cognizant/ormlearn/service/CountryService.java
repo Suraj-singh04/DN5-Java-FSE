@@ -23,4 +23,8 @@ public class CountryService {
         return repository.findByName(name);
     }
 
+    public Country getCountryUsingQuery(String name) {
+        return repository.getCountryByName(name);
+    }
+
 }
