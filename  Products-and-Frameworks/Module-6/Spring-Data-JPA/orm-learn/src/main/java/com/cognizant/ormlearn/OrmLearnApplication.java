@@ -23,17 +23,21 @@ public class OrmLearnApplication implements CommandLineRunner {
 		List<Country> countries = countryService.getAllCountries();
 		countries.forEach(System.out::println);
 
-		System.out.println("---------------------------------");
+		// System.out.println("---------------------------------");
 		
 		// Country country = countryService.getCountry("India");
 
 		// System.out.println(country);
 
-		System.out.println("Using @Query");
+		// System.out.println("Using @Query");
 
-		Country country = countryService.getCountryUsingQuery("India");
+		// Country country = countryService.getCountryUsingQuery("India");
 
-		System.out.println(country);
+		// System.out.println(country);
+
+		System.out.println("Using Pagination");
+
+		countryService.getCountriesPage();
 	}
 
 }

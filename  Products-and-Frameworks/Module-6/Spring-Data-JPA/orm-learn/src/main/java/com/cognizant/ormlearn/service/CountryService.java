@@ -2,7 +2,12 @@ package com.cognizant.ormlearn.service;
 
 import com.cognizant.ormlearn.entity.Country;
 import com.cognizant.ormlearn.repository.CountryRepository;
+
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +30,14 @@ public class CountryService {
 
     public Country getCountryUsingQuery(String name) {
         return repository.getCountryByName(name);
+    }
+
+    public void getCountriesPage() {
+        Pageable pageable = PageRequest.of(0, 3, Sort.by("name"));
+
+        Page<Country> page = repository.findAll(pageable);
+
+        page.getContent().forEach(System.out::println);
     }
 
 }
