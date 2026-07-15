@@ -109,6 +109,11 @@ public class OrmLearnApplication implements CommandLineRunner {
 		System.out.println(
 			employeeService.getAverageSalary(1)
 		);
+
+		System.out.println("\nNative Query");
+
+		employeeService.getAllEmployeesNative()
+				.forEach(System.out::println);
 	}
 
 }

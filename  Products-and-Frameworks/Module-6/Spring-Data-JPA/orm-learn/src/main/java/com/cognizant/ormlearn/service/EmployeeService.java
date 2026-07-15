@@ -21,4 +21,8 @@ public class EmployeeService {
         return repository.getAverageSalary(id);
     }
 
+    public List<Employee> getAllEmployeesNative() {
+        return repository.getAllEmployeesNative();
+    }
+
 }
