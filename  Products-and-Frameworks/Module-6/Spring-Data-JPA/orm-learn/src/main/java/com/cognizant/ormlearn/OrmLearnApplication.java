@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.cognizant.ormlearn.entity.Country;
 import com.cognizant.ormlearn.service.CountryService;
+import com.cognizant.ormlearn.service.DepartmentService;
+import com.cognizant.ormlearn.service.EmployeeService;
 import com.cognizant.ormlearn.service.StockService;
 
 @SpringBootApplication
@@ -19,6 +21,12 @@ public class OrmLearnApplication implements CommandLineRunner {
 
 	@Autowired
 	private StockService stockService;
+
+	@Autowired
+	private EmployeeService employeeService;
+
+	@Autowired
+	private DepartmentService departmentService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(OrmLearnApplication.class, args);
@@ -79,6 +87,24 @@ public class OrmLearnApplication implements CommandLineRunner {
 		System.out.println("\nTop 3 Volumes");
 		stockService.getTopVolumes()
 				.forEach(System.out::println);
+
+	    System.out.println("\nEmployees");
+
+		employeeService.getAllEmployees()
+				.forEach(System.out::println);
+
+		System.out.println("\nDepartments");
+
+		departmentService.getDepartments()
+				.forEach(department -> {
+
+		System.out.println(department.getName());
+
+		department.getEmployees()
+							.forEach(employee ->
+									System.out.println("   " + employee.getName()));
+
+				});
 	}
 
 }
