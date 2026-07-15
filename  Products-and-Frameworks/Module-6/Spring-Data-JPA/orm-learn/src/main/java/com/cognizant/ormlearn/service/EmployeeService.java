@@ -17,4 +17,8 @@ public class EmployeeService {
         return repository.findAll();
     }
 
+    public double getAverageSalary(int id){
+        return repository.getAverageSalary(id);
+    }
+
 }
