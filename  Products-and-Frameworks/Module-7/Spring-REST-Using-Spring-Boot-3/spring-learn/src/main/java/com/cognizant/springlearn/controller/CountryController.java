@@ -22,4 +22,11 @@ public class CountryController {
     public List<Country> getCountries() {
         return countryService.getAllCountries();
     }
+
+    @GetMapping("/countries/{code}")
+    public Country getCountry( @PathVariable String code){
+
+        return countryService.getCountry(code);
+
+    }
 }

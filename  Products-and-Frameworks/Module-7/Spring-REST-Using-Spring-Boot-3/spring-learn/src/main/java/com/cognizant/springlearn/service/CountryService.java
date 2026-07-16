@@ -20,4 +20,15 @@ public class CountryService {
 
         return countries;
     }
+
+    public Country getCountry(String code) {
+
+        return getAllCountries()
+                .stream()
+                .filter(country ->
+                        country.getCode().equalsIgnoreCase(code))
+                .findFirst()
+                .orElse(null);
+
+    }
 }
