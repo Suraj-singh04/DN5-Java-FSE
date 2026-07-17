@@ -2,6 +2,9 @@ package com.cognizant.springlearn.controller;
 
 import com.cognizant.springlearn.model.Country;
 import com.cognizant.springlearn.service.CountryService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,14 +32,14 @@ public class CountryController {
     }
 
     @PostMapping("/countries")
-    public Country addCountry(@RequestBody Country country) {
+    public Country addCountry(@Valid @RequestBody Country country) {
         return countryService.addCountry(country);
     }
 
     @PutMapping("/countries/{code}")
     public Country updateCountry(
             @PathVariable String code,
-            @RequestBody Country country) {
+            @Valid @RequestBody Country country) {
 
         return countryService.updateCountry(code, country);
     }

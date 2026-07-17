@@ -1,12 +1,18 @@
 package com.cognizant.springlearn.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class Country {
 
+    @NotBlank(message = "Country code cannot be empty")
+    @Size(min = 2, max = 2, message = "Country code must be exactly 2 characters")
     private String code;
+
+    @NotBlank(message = "Country name cannot be empty")
     private String name;
 
-    public Country() {
-    }
+    public Country() {}
 
     public Country(String code, String name) {
         this.code = code;
