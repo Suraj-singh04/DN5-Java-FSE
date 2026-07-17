@@ -1,5 +1,6 @@
 package com.cognizant.springlearn.service;
 
+import com.cognizant.springlearn.exception.CountryNotFoundException;
 import com.cognizant.springlearn.model.Country;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class CountryService {
                 .filter(country ->
                         country.getCode().equalsIgnoreCase(code))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new CountryNotFoundException("Country not found"));
 
     }
 }
