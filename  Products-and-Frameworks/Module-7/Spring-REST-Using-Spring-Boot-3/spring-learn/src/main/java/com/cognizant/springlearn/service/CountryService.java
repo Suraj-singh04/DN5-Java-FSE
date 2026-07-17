@@ -5,6 +5,7 @@ import com.cognizant.springlearn.model.Country;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -39,4 +40,38 @@ public class CountryService {
         countries.add(country);
         return country;
     }
+
+    public Country updateCountry(String code, Country updatedCountry) {
+        for (Country country : countries) {
+
+            if (country.getCode().equalsIgnoreCase(code)) {
+
+                country.setName(updatedCountry.getName());
+
+                return country;
+            }
+        }
+
+        throw new CountryNotFoundException("Country not found");
+    }
+
+    public String deleteCountry(String code) {
+
+        Iterator<Country> iterator = countries.iterator();
+
+        while (iterator.hasNext()) {
+
+            Country country = iterator.next();
+
+            if (country.getCode().equalsIgnoreCase(code)) {
+
+                iterator.remove();
+
+                return "Country deleted successfully";
+            }
+        }
+
+        throw new CountryNotFoundException("Country not found");
+    }
+    
 }
